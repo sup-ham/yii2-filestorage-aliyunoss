@@ -10,7 +10,9 @@ use yii2tech\filestorage\BaseStorage;
  */
 class Storage extends BaseStorage
 {
-    const ACCESS_PUBLIC = 'public-read';
+    const ACCESS_DEFAULT = 'default';
+    const ACCESS_PUBLIC_READ = 'public-read';
+    const ACCESS_PUBLIC_RW = 'public-read-write';
     const ACCESS_PRIVATE = 'private';
 
     /** @var OssClient */
