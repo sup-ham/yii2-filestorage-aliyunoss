@@ -18,8 +18,8 @@ use yii2tech\filestorage\BucketSubDirTemplate;
  *     'accessId' => 'XXXX',
  *     'accessSecret' => 'XXXX',
  *     'buckets' => [
- *         'tempFiles',
- *         'imageFiles',
+ *         'tempFiles' => ['access' => 'private'],
+ *         'imageFiles' => ['access' => 'public-read'],
  *     ]
  * ]
  * ```
@@ -33,6 +33,7 @@ use yii2tech\filestorage\BucketSubDirTemplate;
  */
 class Bucket extends BucketSubDirTemplate
 {
+    public $access = Storage::ACCESS_DEFAULT;
     /**
      * {@inheritdoc}
      */
@@ -102,6 +103,7 @@ class Bucket extends BucketSubDirTemplate
         }
 
         if (isset($result)) {
+            $this->setAccess($fileName, $this->access);
             $this->log("file '{$srcFileName}' has been copied to '{$fileName}'");
         } else {
             $this->log("unable to copy file from '{$srcFileName}' to '{$fileName}'!", Logger::LEVEL_ERROR);
