@@ -64,7 +64,15 @@ class Bucket extends BucketSubDirTemplate
      */
     public function saveFileContent($fileName, $content)
     {
-        throw new \yii\base\NotSupportedException('Pull Requests are welcome.');
+        $this->storage->ossClient->putObject($this->name, $fileName, $content);
+
+        if ($result = $this->fileExists($fileName)) {
+            $this->log("file '{$fileName}' has been saved");
+            $this->setAccess($fileName, $this->access);
+        } else {
+            $this->log("Unable to save file '{$fileName}'!", Logger::LEVEL_ERROR);
+        }
+        return $result;
     }
 
     /**
