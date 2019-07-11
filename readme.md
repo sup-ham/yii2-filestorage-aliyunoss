@@ -1,3 +1,7 @@
+supham/yii2-filestorage-aliyunoss
+
+AliYun OSS adapter for [yii2tech/file-storage](https://github.com/sup-ham/yii2-filestorage)
+
 # Installation
 ```
 composer config repositories.yii2oss vcs https://github.com/sup-ham/yii2-filestorage-aliyunoss.git
