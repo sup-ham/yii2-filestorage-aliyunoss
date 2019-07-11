@@ -8,15 +8,19 @@ composer supham/yii2-filestorage-aliyunoss:dev-master
 # Yii2 Configuration
 ```
     'components' => [
-        'fileStorage' => [
-            'class' => 'Supham\FileStorage\AliyunOss\Storage',
-            'endpoint' => 'YOUR_OSS_ENDPOINT.aliyuncs.com',
-            'accessId' => 'XXXX',
-            'accessSecret' => 'XXXX',
-            'buckets' => [
-                'tempFiles' => ['access' => 'private'],
-                'imageFiles' => ['access' => 'public-read'],
-            ]
+    'fileStorage' => [
+        'class' => 'Supham\FileStorage\AliyunOss\Storage',
+        'bucketClassName' => 'Supham\FileStorage\AliyunOss\Bucket',
+        'endpoint' => 'YOUR_OSS_ENDPOINT.aliyuncs.com',
+        'accessId' => 'XXXX',
+        'accessSecret' => 'XXXX',
+        'token' => 'XXXX',
+        'timeout' => 3600,
+        'connectTimeout' => 10,
+        'isCName' => false,
+        'buckets' => [
+            'tempFiles' => ['access' => 'private'],
+            'imageFiles' => ['access' => 'public-read'],
         ],
         // ...
     ],

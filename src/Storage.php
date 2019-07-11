@@ -6,7 +6,35 @@ use Exception;
 use yii2tech\filestorage\BaseStorage;
 
 /**
+ * Storage introduces the file storage based on the Aliyun Oss file system.
+ *
+ * Configuration example:
+ *
+ * ```php
+ * 'fileStorage' => [
+ *     'class' => 'Supham\FileStorage\AliyunOss\Storage',
+ *     'bucketClassName' => 'Supham\FileStorage\AliyunOss\Bucket',
+ *     'endpoint' => 'YOUR_OSS_ENDPOINT.aliyuncs.com',
+ *     'accessId' => 'XXXX',
+ *     'accessSecret' => 'XXXX',
+ *     'token' => 'XXXX',
+ *     'timeout' => 3600,
+ *     'connectTimeout' => 10,
+ *     'isCName' => false,
+ *     'buckets' => [
+ *         'tempFiles' => ['access' => 'private'],
+ *         'imageFiles' => ['access' => 'public-read'],
+ *     ]
+ * ]
+ * ```
+ *
+ * @see Bucket
+ *
  * @property OssClient $ossClient
+ * @method Bucket getBucket($bucketName)
+ *
+ * @author Supham <supalpuket@gmail.com>
+ * @since 1.0
  */
 class Storage extends BaseStorage
 {

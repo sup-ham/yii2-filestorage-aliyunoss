@@ -13,7 +13,7 @@ use yii2tech\filestorage\BucketSubDirTemplate;
  *
  * ```php
  * 'fileStorage' => [
- *     'class' => 'yii2tech\filestorage\local\Storage',
+ *     'class' => 'Supham\FileStorage\AliyunOss\Storage',
  *     'endpoint' => 'YOUR_OSS_ENDPOINT.aliyuncs.com',
  *     'accessId' => 'XXXX',
  *     'accessSecret' => 'XXXX',
