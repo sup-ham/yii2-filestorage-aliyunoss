@@ -2,7 +2,6 @@
 namespace Supham\FileStorage\AliyunOss;
 
 use OSS\Core\OssException;
-use yii\base\Exception;
 use yii\log\Logger;
 use yii2tech\filestorage\BucketSubDirTemplate;
 
@@ -107,7 +106,7 @@ class Bucket extends BucketSubDirTemplate
         try {
             $this->storage->ossClient->uploadFile($this->name, $fileName, $srcFileName);
             $result = $this->fileExists($fileName);
-        } catch(Exception $ex) {
+        } catch(\Exception $ex) {
         }
 
         if (isset($result)) {
@@ -128,7 +127,7 @@ class Bucket extends BucketSubDirTemplate
         try {
             $contents = $this->storage->ossClient->cogetObject($this->name, $fileName);
             $result = file_put_contents($destFileName, $contents) > 0;
-        } catch(Exception $ex) {
+        } catch(\Exception $ex) {
         }
 
         if (isset($result)) {
@@ -201,9 +200,9 @@ class Bucket extends BucketSubDirTemplate
         try {
           $this->storage->ossClient->putObjectAcl($this->name, $fileName, $access);
           return true;
-        } catch (OssException $e) {
+        } catch (\Exception $e) {
           $this->log($e->getMessage(), Logger::LEVEL_ERROR);
-          return false;
         }
+        return false;
     }
 }
